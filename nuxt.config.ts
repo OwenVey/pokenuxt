@@ -5,4 +5,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiKey: '',
   },
+  typescript: {
+    strict: true,
+    shim: false,
+  },
 });
