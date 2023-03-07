@@ -1,5 +1,6 @@
 <template>
   <main class="mx-auto max-w-5xl sm:px-6 lg:px-8">
+    <NuxtLink to="/">All Pokemon</NuxtLink>
     <Button @click="navigateTo(`/pokemon/${+route.params.id - 1}`)"> Previous </Button>
     <Button class="ml-2" @click="navigateTo(`/pokemon/${+route.params.id + 1}`)"> Next </Button>
 
