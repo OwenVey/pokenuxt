@@ -5,7 +5,7 @@
         <NuxtLink
           v-for="(pokemon, index) in allPokemon"
           :key="pokemon.name"
-          :to="`/${pokemon.name}`"
+          :to="`/${index + 1}`"
           class="flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-gray-100 py-4 transition duration-150 hover:scale-105 hover:bg-gray-200"
         >
           <NuxtImg
@@ -27,5 +27,5 @@
 <script setup lang="ts">
 import { type NamedAPIResource } from '~/types';
 
-const { data: allPokemon, pending } = useFetch<NamedAPIResource[]>('/api/pokemon');
+const { data: allPokemon, pending } = useFetch<NamedAPIResource[]>('/api/pokemon', { key: 'all-pokemon' });
 </script>
