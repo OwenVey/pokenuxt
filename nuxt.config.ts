@@ -5,7 +5,7 @@ export default defineNuxtConfig({
       title: 'Pokenuxt',
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@vueuse/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@vueuse/nuxt', '@nuxt/devtools'],
   css: ['~/styles/global.css'],
   runtimeConfig: {
     apiKey: '',
