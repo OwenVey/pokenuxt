@@ -1,6 +1,6 @@
 <template>
   <main class="">
-    <header class="flex justify-between bg-green-500 py-4 px-2 text-white">
+    <header class="flex justify-between bg-green-500 p-4 text-white">
       <NuxtLink class="flex items-center" to="/">
         <ChevronLeft />
         <span class="font-medium">All</span>
@@ -10,14 +10,14 @@
     <div v-if="pending">Loading...</div>
 
     <template v-else-if="pokemon">
-      <div class="bg-green-500 px-2 pb-10">
+      <div class="bg-green-500 px-4 pb-10">
         <div class="flex items-center justify-between">
           <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
           <span class="text-white">#{{ pokemon.id }}</span>
         </div>
       </div>
       <div class="h-20 rounded-b-[100%] bg-green-500"></div>
-      <div class="-mb-28 flex w-full -translate-y-28 items-center justify-between px-2">
+      <div class="-mb-28 flex w-full -translate-y-28 items-center justify-between px-4">
         <NuxtLink
           :to="`/${pokemon.id - 1}`"
           class="flex items-center justify-center rounded-full bg-gray-100/50 p-3 text-gray-700 backdrop-blur"
@@ -26,7 +26,8 @@
         </NuxtLink>
 
         <NuxtImg
-          class="h-auto w-44"
+          :width="176"
+          :height="176"
           :src="pokemon.sprites.other['official-artwork'].front_default"
           alt="Front of pokemon"
         />
@@ -39,7 +40,7 @@
         </NuxtLink>
       </div>
 
-      <div class="grid grid-cols-1 gap-4 px-2">
+      <div class="grid grid-cols-1 gap-4 px-4">
         <div class="flex flex-col justify-center rounded-2xl border bg-gray-100 p-4 backdrop-blur-lg">
           <h2 class="mb-1 font-semibold text-gray-900">Stats</h2>
           <div v-for="stat of pokemon.stats" :key="stat.stat.name" class="flex items-center space-y-1">
