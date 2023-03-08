@@ -10,7 +10,7 @@ module.exports = {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        primary: colors.red,
+        primary: colors.green,
         gray: colors.neutral,
       },
     },

@@ -1,6 +1,6 @@
 <template>
   <main class="">
-    <header class="flex justify-between bg-green-500 p-4 text-white">
+    <header class="flex justify-between bg-primary-500 p-4 text-white">
       <NuxtLink class="flex items-center" to="/">
         <ChevronLeft />
         <span class="font-medium">All</span>
@@ -10,13 +10,13 @@
     <div v-if="pending">Loading...</div>
 
     <template v-else-if="pokemon">
-      <div class="bg-green-500 px-4 pb-10">
+      <div class="bg-primary-500 px-4 pb-10">
         <div class="flex items-center justify-between">
           <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
           <span class="text-white">#{{ pokemon.id }}</span>
         </div>
       </div>
-      <div class="h-20 rounded-b-[100%] bg-green-500"></div>
+      <div class="h-20 rounded-b-[100%] bg-primary-500"></div>
       <div class="-mb-28 flex w-full -translate-y-28 items-center justify-between px-4">
         <NuxtLink
           :to="`/${pokemon.id - 1}`"
@@ -49,7 +49,7 @@
             }}</label>
 
             <div class="h-2 w-full rounded-full bg-gray-300">
-              <div class="h-2 rounded-full bg-green-500" :style="{ width: `${(stat.base_stat / 255) * 100}%` }"></div>
+              <div class="h-2 rounded-full bg-primary-500" :style="{ width: `${(stat.base_stat / 255) * 100}%` }"></div>
             </div>
 
             <span class="ml-2 w-8 font-mono font-semibold text-gray-700">{{ stat.base_stat }}</span>
