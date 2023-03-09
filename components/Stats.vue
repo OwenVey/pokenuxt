@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center space-y-4 rounded-2xl">
+  <div class="flex flex-col justify-center space-y-2 rounded-2xl">
     <div v-for="stat of pokemon.stats" :key="stat.stat.name" class="flex items-center">
       <div class="min-w-[5rem] whitespace-nowrap text-sm font-medium text-gray-500">
         {{ formattedStatName[stat.stat.name] }}

@@ -16,14 +16,14 @@
         <header class="flex justify-between text-white">
           <NuxtLink class="flex items-center" to="/">
             <ChevronLeft />
-            <span class="font-medium">All</span>
+            All
           </NuxtLink>
           <Heart />
         </header>
 
         <div class="mt-2 flex items-center justify-between">
           <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
-          <span class="text-white">#{{ pokemon.id }}</span>
+          <span class="text-white">#{{ String(pokemon.id).padStart(4, '0') }}</span>
         </div>
 
         <div class="-mt-8 flex w-full items-center justify-between">
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <TabGroup class="-mt-8 flex flex-grow flex-col overflow-y-auto rounded-t-3xl bg-white p-4" as="div">
+      <TabGroup class="-mt-8 flex flex-grow flex-col overflow-y-auto rounded-t-3xl bg-white px-4 pt-4" as="div">
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
             v-for="tabLabel in ['About', 'Stats', 'Evolution', 'Moves']"
