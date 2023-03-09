@@ -1,8 +1,8 @@
 <template>
-  <main>
+  <main class="h-full">
     <div v-if="pending">Loading...</div>
 
-    <div v-else-if="pokemon" class="">
+    <div v-else-if="pokemon" class="flex h-full flex-col">
       <div
         class="px-4 pt-4"
         :style="{
@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <TabGroup class="-translate-y-8 rounded-t-3xl bg-white p-4" as="div">
+      <TabGroup class="-mt-8 flex flex-grow flex-col overflow-y-auto rounded-t-3xl bg-white p-4" as="div">
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
             v-for="tabLabel in ['About', 'Stats', 'Evolution', 'Moves']"
@@ -75,7 +75,7 @@
           </Tab>
         </TabList>
 
-        <TabPanels class="mt-4 px-2">
+        <TabPanels class="flex-grow overflow-y-auto px-2 pt-4">
           <TabPanel>
             <About :pokemon="pokemon" :species="species" />
           </TabPanel>
