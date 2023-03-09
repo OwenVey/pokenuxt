@@ -1,6 +1,9 @@
 <template>
+  <p v-if="species" class="text-sm font-medium text-gray-900">
+    {{ getRandomFlavorText() }}
+  </p>
   <dl class="grid grid-cols-[min-content_auto] gap-x-10 gap-y-4">
-    <h2 class="col-span-2 font-semibold">General</h2>
+    <h2 class="col-span-2 mt-6 font-semibold">General</h2>
     <DescriptionTerm>Category</DescriptionTerm>
     <DescriptionDefinition>
       {{ species?.genera.find((g) => g.language.name === 'en')?.genus.replace(' Pokémon', '') }}
@@ -62,12 +65,24 @@
 </template>
 
 <script setup lang="ts">
+import seedrandom from 'seedrandom';
 import { type PokemonSpecies, type Pokemon } from '~/types';
 
 const props = defineProps<{
   pokemon: Pokemon;
   species: PokemonSpecies | null;
 }>();
+
+const randomNum = useState(() => seedrandom().double());
+
+const getRandomFlavorText = () => {
+  if (props.species) {
+    const englishEntries = props.species.flavor_text_entries.filter((t) => t.language.name === 'en');
+    const onlyTexts = englishEntries.map((e) => e.flavor_text);
+    const randomIndex = Math.floor(randomNum.value * onlyTexts.length);
+    return onlyTexts[randomIndex];
+  }
+};
 
 const hectogramsToPounds = (hectograms: number) => {
   return (hectograms / 4.536).toFixed(1);
