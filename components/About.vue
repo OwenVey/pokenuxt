@@ -1,5 +1,6 @@
 <template>
   <dl class="grid grid-cols-[min-content_auto] gap-x-10 gap-y-4">
+    <h2 class="col-span-2 font-semibold">General</h2>
     <DescriptionTerm>Category</DescriptionTerm>
     <DescriptionDefinition>
       {{ species?.genera.find((g) => g.language.name === 'en')?.genus.replace(' Pokémon', '') }}
@@ -20,7 +21,7 @@
       {{ pokemon.abilities.map((a) => a.ability.name).join(', ') }}
     </DescriptionDefinition>
 
-    <h2 class="col-span-2 mt-10 font-semibold">Breeding</h2>
+    <h2 class="col-span-2 mt-6 font-semibold">Breeding</h2>
     <DescriptionTerm>Gender</DescriptionTerm>
     <DescriptionDefinition v-if="species" class="flex items-center">
       <svg class="text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

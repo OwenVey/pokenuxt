@@ -1,47 +1,56 @@
 <template>
-  <main class="px-4 pt-4" :style="{ backgroundColor: getTypeColor(pokemon) }">
-    <header class="flex justify-between text-white">
-      <NuxtLink class="flex items-center" to="/">
-        <ChevronLeft />
-        <span class="font-medium">All</span>
-      </NuxtLink>
-      <Heart />
-    </header>
+  <main>
     <div v-if="pending">Loading...</div>
 
-    <template v-else-if="pokemon">
-      <div class="mt-2 flex items-center justify-between">
-        <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
-        <span class="text-white">#{{ pokemon.id }}</span>
+    <div v-else-if="pokemon" class="">
+      <div
+        class="px-4 pt-4"
+        :style="{
+          backgroundColor: getTypeColor(pokemon),
+          backgroundImage: `linear-gradient(${getTypeColor(pokemon, 'light')}, ${getTypeColor(pokemon, 'dark')})`,
+        }"
+      >
+        <header class="flex justify-between text-white">
+          <NuxtLink class="flex items-center" to="/">
+            <ChevronLeft />
+            <span class="font-medium">All</span>
+          </NuxtLink>
+          <Heart />
+        </header>
+
+        <div class="mt-2 flex items-center justify-between">
+          <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
+          <span class="text-white">#{{ pokemon.id }}</span>
+        </div>
+
+        <div class="flex w-full items-center justify-between">
+          <NuxtLink
+            :to="`/${pokemon.id - 1}`"
+            class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/40"
+            :class="pokemon.id === 1 && 'invisible'"
+          >
+            <ChevronLeft />
+          </NuxtLink>
+
+          <NuxtImg
+            class="z-10"
+            :width="176"
+            :height="176"
+            :src="pokemon.sprites.other['official-artwork'].front_default"
+            alt="Front of pokemon"
+          />
+
+          <NuxtLink
+            :to="`/${pokemon.id + 1}`"
+            class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/30"
+            :class="pokemon.id === 1008 && 'invisible'"
+          >
+            <ChevronRight />
+          </NuxtLink>
+        </div>
       </div>
 
-      <div class="flex w-full items-center justify-between">
-        <NuxtLink
-          :to="`/${pokemon.id - 1}`"
-          class="flex items-center justify-center rounded-full bg-white/30 p-3 text-white hover:bg-white/40"
-          :class="pokemon.id === 1 && 'invisible'"
-        >
-          <ChevronLeft />
-        </NuxtLink>
-
-        <NuxtImg
-          class="translate-y-8"
-          :width="176"
-          :height="176"
-          :src="pokemon.sprites.other['official-artwork'].front_default"
-          alt="Front of pokemon"
-        />
-
-        <NuxtLink
-          :to="`/${pokemon.id + 1}`"
-          class="flex items-center justify-center rounded-full bg-white/30 p-3 text-white hover:bg-white/40"
-          :class="pokemon.id === 1008 && 'invisible'"
-        >
-          <ChevronRight />
-        </NuxtLink>
-      </div>
-
-      <TabGroup class="-mx-4 rounded-t-3xl bg-white p-4" as="div">
+      <TabGroup class="-translate-y-8 rounded-t-3xl bg-white p-4" as="div">
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
             v-for="category in ['About', 'Stats', 'Evolution', 'Moves']"
@@ -72,7 +81,12 @@
           <TabPanel>Moves content</TabPanel>
         </TabPanels>
       </TabGroup>
-    </template>
+    </div>
+
+    <div v-else-if="error">
+      <h1>Pokemon with id {{ route.params.id }} does not exist</h1>
+      {{ error }}
+    </div>
   </main>
 </template>
 
@@ -82,7 +96,11 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 
 const route = useRoute();
 
-const { data: pokemon, pending } = await useFetch(`/api/pokemon/${route.params.id}`, {
+const {
+  data: pokemon,
+  pending,
+  error,
+} = await useFetch(`/api/pokemon/${route.params.id}`, {
   key: `pokemon-${route.params.id}`,
 });
 const { data: species } = useFetch(`/api/pokemon-species/${pokemon.value?.species.name}`, {
