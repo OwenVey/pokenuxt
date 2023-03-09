@@ -7,7 +7,10 @@
         class="px-4 pt-4"
         :style="{
           backgroundColor: getTypeColor(pokemon),
-          backgroundImage: `linear-gradient(${getTypeColor(pokemon, 'light')}, ${getTypeColor(pokemon, 'dark')})`,
+          backgroundImage: `radial-gradient(circle at 50% 75%, ${getTypeColor(pokemon, 'light')}, ${getTypeColor(
+            pokemon,
+            'dark'
+          )} 100%)`,
         }"
       >
         <header class="flex justify-between text-white">
@@ -36,7 +39,9 @@
             class="z-10"
             :width="176"
             :height="176"
-            :src="pokemon.sprites.other['official-artwork'].front_default"
+            :src="
+              pokemon.sprites.other['home']?.front_default || pokemon.sprites.other['official-artwork'].front_default
+            "
             alt="Front of pokemon"
           />
 
@@ -53,9 +58,9 @@
       <TabGroup class="-translate-y-8 rounded-t-3xl bg-white p-4" as="div">
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
-            v-for="category in ['About', 'Stats', 'Evolution', 'Moves']"
+            v-for="tabLabel in ['About', 'Stats', 'Evolution', 'Moves']"
             as="template"
-            :key="category"
+            :key="tabLabel"
             v-slot="{ selected }"
           >
             <button
@@ -65,7 +70,7 @@
                 selected ? 'bg-white shadow' : 'text-gray-700 hover:bg-gray-300 hover:text-gray-800',
               ]"
             >
-              {{ category }}
+              {{ tabLabel }}
             </button>
           </Tab>
         </TabList>
