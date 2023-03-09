@@ -26,7 +26,7 @@
         <div class="flex w-full items-center justify-between">
           <NuxtLink
             :to="`/${pokemon.id - 1}`"
-            class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/40"
+            class="mb-8 flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/40"
             :class="pokemon.id === 1 && 'invisible'"
           >
             <ChevronLeft />
@@ -42,7 +42,7 @@
 
           <NuxtLink
             :to="`/${pokemon.id + 1}`"
-            class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/30"
+            class="mb-8 flex items-center justify-center rounded-full bg-white/20 p-3 text-white backdrop-blur-sm hover:bg-white/30"
             :class="pokemon.id === 1008 && 'invisible'"
           >
             <ChevronRight />
