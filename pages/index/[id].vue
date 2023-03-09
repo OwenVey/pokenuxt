@@ -18,7 +18,8 @@
       <div class="flex w-full items-center justify-between">
         <NuxtLink
           :to="`/${pokemon.id - 1}`"
-          class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white hover:bg-white/30"
+          class="flex items-center justify-center rounded-full bg-white/30 p-3 text-white hover:bg-white/40"
+          :class="pokemon.id === 1 && 'invisible'"
         >
           <ChevronLeft />
         </NuxtLink>
@@ -33,7 +34,8 @@
 
         <NuxtLink
           :to="`/${pokemon.id + 1}`"
-          class="flex items-center justify-center rounded-full bg-white/20 p-3 text-white hover:bg-white/30"
+          class="flex items-center justify-center rounded-full bg-white/30 p-3 text-white hover:bg-white/40"
+          :class="pokemon.id === 1008 && 'invisible'"
         >
           <ChevronRight />
         </NuxtLink>
@@ -62,22 +64,23 @@
         <TabPanels class="mt-2">
           <TabPanel>About content</TabPanel>
           <TabPanel>
-            <div class="flex flex-col justify-center rounded-2xl">
-              <div v-for="stat of pokemon.stats" :key="stat.stat.name" class="flex items-center space-y-1">
-                <label
-                  class="w-28 whitespace-nowrap text-sm font-medium capitalize text-gray-700"
+            <div class="flex flex-col justify-center space-y-2 rounded-2xl">
+              <div v-for="stat of pokemon.stats" :key="stat.stat.name" class="flex items-center">
+                <div
+                  class="min-w-[5rem] whitespace-nowrap text-sm font-medium capitalize text-gray-500"
                   :for="stat.stat.name"
-                  >{{ stat.stat.name.replace('special-', 'sp. ') }}</label
                 >
-
-                <div class="mx-2 h-2 w-full rounded-full bg-gray-300">
-                  <div
-                    class="h-2 rounded-full"
-                    :style="{ width: `${(stat.base_stat / 255) * 100}%`, backgroundColor: typeColor }"
-                  ></div>
+                  {{ stat.stat.name.replace('special-', 'sp. ') }}
                 </div>
 
-                <span class="w-8 text-sm font-semibold text-gray-900">{{ stat.base_stat }}</span>
+                <div class="mx-8 text-sm font-semibold text-gray-900">{{ stat.base_stat }}</div>
+
+                <div class="h-2 w-full rounded-full bg-gray-300">
+                  <div
+                    class="h-2 rounded-full"
+                    :style="{ width: `${(stat.base_stat / 150) * 100}%`, backgroundColor: typeColor }"
+                  ></div>
+                </div>
               </div>
             </div>
           </TabPanel>
