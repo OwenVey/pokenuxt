@@ -1,7 +1,7 @@
 export interface Pokemon {
   abilities: PokemonAbility[];
   base_experience: number;
-  forms: PokemonForm[];
+  forms: NamedAPIResource[];
   game_indices: VersionGameIndex[];
   height: number;
   held_items: PokemonHeldItem[];
@@ -12,7 +12,7 @@ export interface Pokemon {
   name: string;
   order: number;
   past_types: PokemonTypePast[];
-  species: PokemonSpecies;
+  species: NamedAPIResource;
   sprites: PokemonSprites;
   stats: PokemonStat[];
   types: PokemonType[];
@@ -20,95 +20,45 @@ export interface Pokemon {
 }
 
 export interface PokemonAbility {
-  ability: Ability;
+  ability: NamedAPIResource;
   is_hidden: boolean;
   slot: number;
 }
 
-export interface Ability {
-  name: string;
-  url: string;
-}
-
-export interface PokemonForm {
-  name: string;
-  url: string;
-}
-
 export interface VersionGameIndex {
   game_index: number;
-  version: Version;
-}
-
-export interface Version {
-  name: string;
-  url: string;
+  version: NamedAPIResource;
 }
 
 export interface PokemonHeldItem {
-  item: Item;
+  item: NamedAPIResource;
   version_details: PokemonHeldItemVersion[];
-}
-
-export interface Item {
-  name: string;
-  url: string;
 }
 
 export interface PokemonHeldItemVersion {
   rarity: number;
-  version: Version;
-}
-
-export interface Version {
-  name: string;
-  url: string;
+  version: NamedAPIResource;
 }
 
 export interface PokemonMove {
-  move: Move;
-  version_group_details: VersionGroupDetail[];
+  move: NamedAPIResource;
+  version_group_details: PokemonMoveVersion[];
 }
 
-export interface Move {
-  name: string;
-  url: string;
-}
-
-export interface VersionGroupDetail {
+export interface PokemonMoveVersion {
+  move_learn_method: NamedAPIResource;
+  version_group: NamedAPIResource;
   level_learned_at: number;
-  move_learn_method: MoveLearnMethod;
-  version_group: VersionGroup;
-}
-
-export interface MoveLearnMethod {
-  name: string;
-  url: string;
-}
-
-export interface VersionGroup {
-  name: string;
-  url: string;
 }
 
 export interface PokemonTypePast {
-  generation: Generation;
+  generation: NamedAPIResource;
   types: PokemonType[];
-}
-
-export interface Generation {
-  name: string;
-  url: string;
 }
 
 export interface PokemonType {
   slot: number;
   type: Type;
-}
-
-export interface PokemonSpecies {
-  name: string;
-  url: string;
 }
 
 export interface PokemonSprites {
@@ -353,12 +303,7 @@ export interface Icons2 {
 export interface PokemonStat {
   base_stat: number;
   effort: number;
-  stat: Stat;
-}
-
-export interface Stat {
-  name: string;
-  url: string;
+  stat: NamedAPIResource;
 }
 
 export interface PokemonType {
@@ -401,4 +346,75 @@ export interface NamedAPIResourceList {
 export interface NamedAPIResource {
   name: string;
   url: string;
+}
+
+export interface APIResource {
+  url: string;
+}
+
+export interface PokemonSpecies {
+  base_happiness: number;
+  capture_rate: number;
+  color: NamedAPIResource;
+  egg_groups: NamedAPIResource[];
+  evolution_chain: APIResource;
+  evolves_from_species: NamedAPIResource;
+  flavor_text_entries: FlavorText[];
+  form_descriptions: Description[];
+  forms_switchable: boolean;
+  gender_rate: number;
+  genera: Genus[];
+  generation: NamedAPIResource;
+  growth_rate: NamedAPIResource;
+  habitat: NamedAPIResource;
+  has_gender_differences: boolean;
+  hatch_counter: number;
+  id: number;
+  is_baby: boolean;
+  is_legendary: boolean;
+  is_mythical: boolean;
+  name: string;
+  names: Name[];
+  order: number;
+  pal_park_encounters: PalParkEncounterArea[];
+  pokedex_numbers: PokemonSpeciesDexEntry[];
+  shape: NamedAPIResource;
+  varieties: PokemonSpeciesVariety[];
+}
+
+export interface FlavorText {
+  flavor_text: string;
+  language: NamedAPIResource;
+  version: NamedAPIResource;
+}
+
+export interface Description {
+  description: string;
+  language: NamedAPIResource;
+}
+
+export interface Genus {
+  genus: string;
+  language: NamedAPIResource;
+}
+
+export interface Name {
+  language: NamedAPIResource;
+  name: string;
+}
+
+export interface PalParkEncounterArea {
+  area: NamedAPIResource;
+  base_score: number;
+  rate: number;
+}
+
+export interface PokemonSpeciesDexEntry {
+  entry_number: number;
+  pokedex: NamedAPIResource;
+}
+
+export interface PokemonSpeciesVariety {
+  is_default: boolean;
+  pokemon: NamedAPIResource;
 }
