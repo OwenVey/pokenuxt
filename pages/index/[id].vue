@@ -21,9 +21,15 @@
           <Heart />
         </header>
 
-        <div class="mt-2 flex items-center justify-between">
+        <div class="mt-2 flex flex-col">
           <h1 class="text-3xl font-semibold capitalize text-white">{{ pokemon.name }}</h1>
-          <span class="text-white">#{{ String(pokemon.id).padStart(4, '0') }}</span>
+          <span
+            class="font-medium"
+            :style="{
+              color: getTypeColorFromPokemon(pokemon, 'text-light'),
+            }"
+            >#{{ String(pokemon.id).padStart(4, '0') }}</span
+          >
         </div>
 
         <div class="-mt-8 flex w-full items-center justify-between">
