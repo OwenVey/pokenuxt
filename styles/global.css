@@ -8,74 +8,92 @@ html {
   --normal-default: hsl(59, 21%, 57%);
   --normal-light: hsl(59, 31%, 67%);
   --normal-dark: hsl(59, 21%, 37%);
+  --normal-text-light: hsl(59, 100%, 90%);
 
   --fire-default: hsl(26, 85%, 56%);
   --fire-light: hsl(26, 100%, 52%);
   --fire-dark: hsl(26, 85%, 36%);
+  --fire-text-light: hsl(26, 100%, 90%);
 
   --water-default: hsl(221, 82%, 66%);
   --water-light: hsl(207, 100%, 63%);
   --water-dark: hsl(221, 82%, 46%);
+  --water-text-light: hsl(207, 100%, 90%);
 
   --electric-default: hsl(48, 93%, 57%);
   --electric-light: hsl(48, 100%, 50%);
   --electric-dark: hsl(48, 93%, 37%);
+  --electric-text-light: hsl(48, 100%, 90%);
 
   --grass-default: hsl(98, 52%, 54%);
   --grass-light: hsl(98, 82%, 52%);
   --grass-dark: hsl(98, 100%, 20%);
+  --grass-text-light: hsl(98, 100%, 90%);
 
   --ice-default: hsl(177, 47%, 72%);
   --ice-light: hsl(177, 57%, 82%);
   --ice-dark: hsl(177, 47%, 52%);
+  --ice-text-light: hsl(177, 100%, 90%);
 
   --fighting-default: hsl(2, 66%, 46%);
   --fighting-light: hsl(2, 76%, 56%);
   --fighting-dark: hsl(2, 66%, 26%);
+  --fighting-text-light: hsl(2, 100%, 90%);
 
   --poison-default: hsl(301, 45%, 44%);
   --poison-light: hsl(301, 55%, 54%);
   --poison-dark: hsl(301, 45%, 24%);
+  --poison-text-light: hsl(301, 100%, 90%);
 
   --ground-default: hsl(43, 68%, 64%);
   --ground-light: hsl(43, 78%, 74%);
   --ground-dark: hsl(43, 68%, 44%);
+  --ground-text-light: hsl(43, 100%, 90%);
 
   --flying-default: hsl(256, 81%, 76%);
   --flying-light: hsl(256, 91%, 86%);
   --flying-dark: hsl(256, 81%, 56%);
+  --flying-text-light: hsl(256, 100%, 90%);
 
   --psychic-default: hsl(342, 93%, 65%);
   --psychic-light: hsl(342, 100%, 75%);
   --psychic-dark: hsl(342, 93%, 45%);
+  --psychic-text-light: hsl(342, 100%, 90%);
 
   --bug-default: hsl(67, 75%, 41%);
   --bug-light: hsl(67, 85%, 51%);
   --bug-dark: hsl(67, 75%, 21%);
+  --bug-text-light: hsl(67, 100%, 90%);
 
   --rock-default: hsl(50, 54%, 46%);
   --rock-light: hsl(50, 64%, 56%);
   --rock-dark: hsl(50, 54%, 26%);
+  --rock-text-light: hsl(50, 100%, 90%);
 
   --ghost-default: hsl(266, 27%, 47%);
   --ghost-light: hsl(266, 37%, 57%);
   --ghost-dark: hsl(266, 27%, 27%);
+  --ghost-text-light: hsl(266, 100%, 90%);
 
   --dragon-default: hsl(257, 97%, 60%);
   --dragon-light: hsl(257, 100%, 70%);
   --dragon-dark: hsl(257, 97%, 40%);
+  --dragon-text-light: hsl(257, 100%, 90%);
 
   --dark-default: hsl(24, 23%, 36%);
   --dark-light: hsl(24, 33%, 46%);
   --dark-dark: hsl(24, 23%, 16%);
+  --dark-text-light: hsl(24, 100%, 90%);
 
   --steel-default: hsl(240, 19%, 76%);
   --steel-light: hsl(240, 29%, 86%);
   --steel-dark: hsl(240, 19%, 56%);
+  --steel-text-light: hsl(240, 100%, 90%);
 
   --fairy-default: hsl(330, 50%, 68%);
   --fairy-light: hsl(330, 60%, 78%);
   --fairy-dark: hsl(330, 50%, 48%);
+  --fairy-text-light: hsl(330, 100%, 90%);
 
   @apply antialiased;
 }

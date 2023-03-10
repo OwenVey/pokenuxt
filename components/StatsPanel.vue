@@ -11,7 +11,10 @@
         <div class="h-2 w-full rounded-full bg-gray-300">
           <div
             class="h-2 rounded-full"
-            :style="{ width: `${(stat.base_stat / progressBarMax) * 100}%`, backgroundColor: getTypeColor(pokemon) }"
+            :style="{
+              width: `${(stat.base_stat / progressBarMax) * 100}%`,
+              backgroundColor: getTypeColorFromPokemon(pokemon),
+            }"
           ></div>
         </div>
       </template>
@@ -27,7 +30,7 @@
           class="h-2 rounded-full"
           :style="{
             width: `${(summedStats / (pokemon.stats.length * progressBarMax)) * 100}%`,
-            backgroundColor: getTypeColor(pokemon),
+            backgroundColor: getTypeColorFromPokemon(pokemon),
           }"
         ></div>
       </div>

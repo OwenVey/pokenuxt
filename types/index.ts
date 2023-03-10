@@ -1,4 +1,4 @@
-import { Interface } from 'readline';
+export type ColorVariant = 'default' | 'light' | 'dark' | 'text-light';
 
 export interface Pokemon {
   abilities: PokemonAbility[];

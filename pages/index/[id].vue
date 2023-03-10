@@ -6,11 +6,11 @@
       <div
         class="px-4 pt-4"
         :style="{
-          backgroundColor: getTypeColor(pokemon),
-          backgroundImage: `radial-gradient(circle at 50% 75%, ${getTypeColor(pokemon, 'light')}, ${getTypeColor(
+          backgroundColor: getTypeColorFromPokemon(pokemon),
+          backgroundImage: `radial-gradient(circle at 50% 75%, ${getTypeColorFromPokemon(
             pokemon,
-            'dark'
-          )} 100%)`,
+            'light'
+          )}, ${getTypeColorFromPokemon(pokemon, 'dark')} 100%)`,
         }"
       >
         <header class="flex justify-between text-white">

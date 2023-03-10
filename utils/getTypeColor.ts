@@ -1,9 +1,5 @@
-import { type Pokemon } from '~/types';
+import { type ColorVariant } from '~/types';
 
-export function getTypeColor(pokemon: Pokemon | null, type: 'default' | 'light' | 'dark' = 'default') {
-  if (pokemon === null) {
-    return `var(--normal-default)`;
-  } else {
-    return `var(--${pokemon.types[0].type.name}-${type})`;
-  }
+export function getTypeColor(type: string, variant: ColorVariant = 'default') {
+  return `var(--${type}-${variant})`;
 }

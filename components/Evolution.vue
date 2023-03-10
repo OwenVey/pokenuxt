@@ -38,7 +38,7 @@
 
       <div
         class="mt-1 border-b-2 text-sm font-semibold capitalize text-gray-900"
-        :style="{ borderColor: chainLink.species.id === pokemon.id ? getTypeColor(pokemon) : 'transparent' }"
+        :style="{ borderColor: chainLink.species.id === pokemon.id ? getTypeColorFromPokemon(pokemon) : 'transparent' }"
       >
         {{ chainLink.species.name }}
       </div>

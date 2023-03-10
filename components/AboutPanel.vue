@@ -3,11 +3,26 @@
     <p v-if="species" class="text-sm font-medium text-gray-900">
       {{ getRandomFlavorText() }}
     </p>
-    <dl class="grid grid-cols-[min-content_auto] gap-x-10 gap-y-4">
+    <dl class="grid grid-cols-[min-content_auto] items-center gap-x-10 gap-y-4">
       <h2 class="col-span-2 mt-6 font-semibold">General</h2>
       <DescriptionTerm>Category</DescriptionTerm>
       <DescriptionDefinition>
         {{ species?.genera.find((g) => g.language.name === 'en')?.genus.replace(' Pokémon', '') }}
+      </DescriptionDefinition>
+
+      <DescriptionTerm>Type</DescriptionTerm>
+      <DescriptionDefinition class="flex space-x-2">
+        <div
+          v-for="type of pokemon.types"
+          :key="type.type.name"
+          :style="{
+            color: getTypeColor(type.type.name, 'text-light'),
+            backgroundColor: getTypeColor(type.type.name, 'dark'),
+          }"
+          class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium capitalize"
+        >
+          {{ type.type.name }}
+        </div>
       </DescriptionDefinition>
 
       <DescriptionTerm>Height</DescriptionTerm>
