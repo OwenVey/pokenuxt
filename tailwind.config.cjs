@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  safelist: ['grid-cols-2', 'grid-cols-4', 'grid-cols-6'],
   theme: {
     extend: {
       fontFamily: {

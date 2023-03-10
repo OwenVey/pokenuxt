@@ -1,6 +1,6 @@
 import { type Pokemon } from '~/types';
 
-export default function getTypeColor(pokemon: Pokemon | null, type: 'default' | 'light' | 'dark' = 'default') {
+export function getTypeColor(pokemon: Pokemon | null, type: 'default' | 'light' | 'dark' = 'default') {
   if (pokemon === null) {
     return `var(--normal-default)`;
   } else {
