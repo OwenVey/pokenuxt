@@ -114,11 +114,10 @@ const { data: species } = await useFetch(`/api/pokemon-species/${pokemon.value?.
   key: `pokemon-species-${pokemon.value?.species.name}`,
 });
 
-const { data: evolutionChain } = await useFetch(
+const { data: evolutionChain } = await useLazyFetch(
   `/api/evolution-chain/${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
   {
     key: `evolution-chain-${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
-    lazy: true,
   }
 );
 </script>
