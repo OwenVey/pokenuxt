@@ -26,7 +26,7 @@
             class="mb-4 flex flex-1 flex-col items-center justify-center rounded-lg border border-gray-200 bg-gray-100 py-4 transition duration-150 hover:bg-gray-200"
           >
             <NuxtImg
-              class="h-20 w-20"
+              class="pointer-events-none h-20 w-20"
               :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`"
             />
             <div class="mt-1 font-semibold capitalize text-gray-700">{{ pokemon.name }}</div>
