@@ -76,15 +76,9 @@
         </TabList>
 
         <TabPanels class="flex flex-grow flex-col overflow-y-auto px-2 py-4">
-          <TabPanel>
-            <About :pokemon="pokemon" :species="species" />
-          </TabPanel>
-          <TabPanel>
-            <Stats :pokemon="pokemon" />
-          </TabPanel>
-          <TabPanel class="flex flex-grow items-center justify-center">
-            <EvolutionPanel :pokemon="pokemon" :evolution-chain="evolutionChain" />
-          </TabPanel>
+          <AboutPanel :pokemon="pokemon" :species="species" />
+          <StatsPanel :pokemon="pokemon" />
+          <EvolutionPanel :pokemon="pokemon" :evolution-chain="evolutionChain" />
           <TabPanel>Moves content</TabPanel>
         </TabPanels>
       </TabGroup>
