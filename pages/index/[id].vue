@@ -75,7 +75,7 @@
           </Tab>
         </TabList>
 
-        <TabPanels class="flex-grow overflow-y-auto px-2 pt-4">
+        <TabPanels class="flex-grow overflow-y-auto px-2 py-4">
           <TabPanel>
             <About :pokemon="pokemon" :species="species" />
           </TabPanel>
