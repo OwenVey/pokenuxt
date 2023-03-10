@@ -55,19 +55,19 @@ const chunkSize = computed(() => {
   }
 });
 
-const filteredPokemon = computed(() => {
-  let pokemon = allPokemon.value || [];
-  if (search.value) {
-    pokemon = pokemon.filter((p) => p.name.includes(search.value.toLowerCase()));
-  }
-  return chunkArray(pokemon, chunkSize.value);
-});
-
 const {
   data: allPokemon,
   pending,
   error,
 } = useFetch('/api/pokemon', {
   key: 'all-pokemon',
+});
+
+const filteredPokemon = computed(() => {
+  let pokemon = allPokemon.value || [];
+  if (search.value) {
+    pokemon = pokemon.filter((p) => p.name.includes(search.value.toLowerCase()));
+  }
+  return chunkArray(pokemon, chunkSize.value);
 });
 </script>
