@@ -8,15 +8,7 @@
 
         <div class="text-right text-sm font-semibold text-gray-900">{{ stat.base_stat }}</div>
 
-        <div class="h-2 w-full rounded-full bg-gray-300">
-          <div
-            class="h-2 rounded-full"
-            :style="{
-              width: `${(stat.base_stat / progressBarMax) * 100}%`,
-              backgroundColor: getTypeColorFromPokemon(pokemon),
-            }"
-          ></div>
-        </div>
+        <ProgressBar :value="stat.base_stat" :max="progressBarMax" :color="getTypeColorFromPokemon(pokemon)" />
       </template>
 
       <div class="whitespace-nowrap text-sm font-medium text-gray-500">Total</div>
@@ -25,15 +17,11 @@
         {{ summedStats }}
       </div>
 
-      <div class="h-2 w-full rounded-full bg-gray-300">
-        <div
-          class="h-2 rounded-full"
-          :style="{
-            width: `${(summedStats / (pokemon.stats.length * progressBarMax)) * 100}%`,
-            backgroundColor: getTypeColorFromPokemon(pokemon),
-          }"
-        ></div>
-      </div>
+      <ProgressBar
+        :value="summedStats"
+        :max="pokemon.stats.length * progressBarMax"
+        :color="getTypeColorFromPokemon(pokemon)"
+      />
     </div>
   </TabPanel>
 </template>

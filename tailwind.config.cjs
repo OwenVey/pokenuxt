@@ -14,6 +14,9 @@ module.exports = {
         primary: colors.sky,
         gray: colors.neutral,
       },
+      transitionProperty: {
+        width: 'width',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],
