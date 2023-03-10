@@ -1,3 +1,5 @@
+import { Interface } from 'readline';
+
 export interface Pokemon {
   abilities: PokemonAbility[];
   base_experience: number;
@@ -417,4 +419,47 @@ export interface PokemonSpeciesDexEntry {
 export interface PokemonSpeciesVariety {
   is_default: boolean;
   pokemon: NamedAPIResource;
+}
+
+export interface EvolutionChain {
+  id: number;
+  baby_trigger_item: NamedAPIResource;
+  chain: ChainLink;
+}
+
+export interface ChainLink {
+  is_baby: boolean;
+  species: NamedAPIResource;
+  evolution_details: EvolutionDetail[];
+  evolves_to: ChainLink[];
+}
+
+export interface EvolutionChainWithSpecies extends Omit<EvolutionChain, 'chain'> {
+  chain: ChainLinkWithSpecies;
+}
+
+export interface ChainLinkWithSpecies extends Omit<ChainLink, 'species' | 'evolves_to'> {
+  species: PokemonSpecies;
+  evolves_to: ChainLinkWithSpecies[];
+}
+
+export interface EvolutionDetail {
+  item: NamedAPIResource;
+  trigger: NamedAPIResource;
+  gender: number;
+  held_item: NamedAPIResource;
+  known_move: NamedAPIResource;
+  known_move_type: NamedAPIResource;
+  location: NamedAPIResource;
+  min_level: number;
+  min_happiness: number;
+  min_beauty: number;
+  min_affection: number;
+  needs_overworld_rain: boolean;
+  party_species: NamedAPIResource;
+  party_type: NamedAPIResource;
+  relative_physical_stats: number;
+  time_of_day: string;
+  trade_species: NamedAPIResource;
+  turn_upside_down: boolean;
 }

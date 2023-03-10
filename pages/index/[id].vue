@@ -82,7 +82,9 @@
           <TabPanel>
             <Stats :pokemon="pokemon" />
           </TabPanel>
-          <TabPanel>Evolution content</TabPanel>
+          <TabPanel>
+            <Evolution :evolution-chain="evolutionChain" />
+          </TabPanel>
           <TabPanel>Moves content</TabPanel>
         </TabPanels>
       </TabGroup>
@@ -108,7 +110,15 @@ const {
 } = await useFetch(`/api/pokemon/${route.params.id}`, {
   key: `pokemon-${route.params.id}`,
 });
-const { data: species } = useFetch(`/api/pokemon-species/${pokemon.value?.species.name}`, {
+const { data: species } = await useFetch(`/api/pokemon-species/${pokemon.value?.species.name}`, {
   key: `pokemon-species-${pokemon.value?.species.name}`,
 });
+
+const { data: evolutionChain } = await useFetch(
+  `/api/evolution-chain/${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
+  {
+    key: `evolution-chain-${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
+    lazy: true,
+  }
+);
 </script>
