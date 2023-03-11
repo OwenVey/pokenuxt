@@ -59,7 +59,7 @@ const {
   data: allPokemon,
   pending,
   error,
-} = useFetch('/api/pokemon', {
+} = await useFetch('/api/pokemon', {
   key: 'all-pokemon',
 });
 

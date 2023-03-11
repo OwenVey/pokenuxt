@@ -14,4 +14,14 @@ export default defineNuxtConfig({
     shim: false,
     typeCheck: true,
   },
+  routeRules: {
+    '/': {
+      static: true,
+      cache: { maxAge: 60 * 60 * 24 },
+    },
+    '/**': {
+      static: true,
+      cache: { maxAge: 60 * 60 * 24 },
+    },
+  },
 });
