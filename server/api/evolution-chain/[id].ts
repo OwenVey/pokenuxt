@@ -9,6 +9,12 @@ import { getLastSegmentOfUrl } from '@/utils/getLastSegmentOfUrl';
 
 export default defineEventHandler(async (event): Promise<EvolutionChainWithSpecies> => {
   const id = event.context.params?.id;
+  if (!id || !isValidId(id)) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: `${id} is not a valid id`,
+    });
+  }
 
   const evolutionChain = await $fetch<EvolutionChain>(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
   const ids = getSpeciesIds(evolutionChain.chain);

@@ -65,9 +65,9 @@
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
             v-for="tabLabel in ['About', 'Stats', 'Evolution', 'Moves']"
-            as="template"
             :key="tabLabel"
             v-slot="{ selected }"
+            as="template"
           >
             <button
               :class="[
@@ -100,6 +100,7 @@
 <script setup lang="ts">
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-vue-next';
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
+import { EvolutionChainWithSpecies } from '~~/types';
 
 const route = useRoute();
 
@@ -110,14 +111,31 @@ const {
 } = await useFetch(`/api/pokemon/${route.params.id}`, {
   key: `pokemon-${route.params.id}`,
 });
-const { data: species } = await useFetch(`/api/pokemon-species/${pokemon.value?.species.name}`, {
+const { data: species } = await useLazyFetch(`/api/pokemon-species/${pokemon.value?.species.name}`, {
   key: `pokemon-species-${pokemon.value?.species.name}`,
 });
 
-const { data: evolutionChain } = await useLazyFetch(
-  `/api/evolution-chain/${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
-  {
-    key: `evolution-chain-${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
+watch(species, (newSpecies) => {
+  if (newSpecies) {
+    const evolutionChainId = getLastSegmentOfUrl(species.value?.evolution_chain.url);
+    if (evolutionChainId) {
+      fetchEvolutionChain(evolutionChainId);
+    }
   }
-);
+});
+
+const evolutionChain = ref<EvolutionChainWithSpecies | null>(null);
+
+const fetchEvolutionChain = async (id: string) => {
+  evolutionChain.value = await $fetch(`/api/evolution-chain/${id}`);
+};
+
+// const { data: evolutionChain } = await useLazyFetch(
+//   `/api/evolution-chain/${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
+//   {
+//     immediate: false,
+//     watch: [species],
+//     key: `evolution-chain-${getLastSegmentOfUrl(species.value?.evolution_chain.url)}`,
+//   }
+// );
 </script>
