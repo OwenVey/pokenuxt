@@ -1,7 +1,7 @@
 <template>
   <div class="h-2 w-full rounded-full bg-gray-300">
     <ClientOnly>
-      <Transition appear @before-appear="percentage = 0" @after-appear="percentage = (value / max) * 100">
+      <Transition appear @after-appear="percentage = (value / max) * 100">
         <div
           class="h-2 rounded-full bg-primary-500 transition-width duration-150"
           :style="{
