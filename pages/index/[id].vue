@@ -61,7 +61,12 @@
         </div>
       </div>
 
-      <TabGroup class="-mt-8 flex flex-grow flex-col overflow-y-auto rounded-t-3xl bg-white px-4 pt-4" as="div">
+      <TabGroup
+        :selected-index="selectedTab"
+        class="-mt-8 flex flex-grow flex-col overflow-y-auto rounded-t-3xl bg-white px-4 pt-4"
+        as="div"
+        @change="changeTab"
+      >
         <TabList class="mt-4 flex space-x-1 rounded-xl bg-gray-200 p-1">
           <Tab
             v-for="tabLabel in ['About', 'Stats', 'Evolution', 'Moves']"
@@ -103,6 +108,11 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import { EvolutionChainWithSpecies } from '~~/types';
 
 const route = useRoute();
+const selectedTab = useState('selectedTab', () => 0);
+
+function changeTab(index: number) {
+  selectedTab.value = index;
+}
 
 const {
   data: pokemon,
