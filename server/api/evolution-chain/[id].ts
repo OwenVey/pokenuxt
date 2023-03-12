@@ -39,7 +39,7 @@ function getSpeciesIds(evolution: ChainLink, ids: string[] = []) {
 
 // replaces the NamedAPIResource "species" the fetched pokemon-species data from the function above
 function replaceSpeciesWithData(evolution: ChainLink, species: PokemonSpecies[]) {
-  const matchedSpecies = species.find((s) => s.name === evolution.species.name)!;
+  const matchedSpecies = species.find((s) => s.name === evolution.species.name) as PokemonSpecies;
 
   let chainLinkWithSpecies: ChainLinkWithSpecies[] = [];
 

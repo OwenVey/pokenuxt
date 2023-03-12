@@ -84,7 +84,7 @@ export interface Other {
 
 export interface DreamWorld {
   front_default: string;
-  front_female: any;
+  front_female: string;
 }
 
 export interface Home {
@@ -283,7 +283,7 @@ export interface GenerationVii {
 
 export interface Icons {
   front_default: string;
-  front_female: any;
+  front_female: string;
 }
 
 export interface UltraSunUltraMoon {
@@ -299,7 +299,7 @@ export interface GenerationViii {
 
 export interface Icons2 {
   front_default: string;
-  front_female: any;
+  front_female: string;
 }
 
 export interface PokemonStat {
