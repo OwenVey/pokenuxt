@@ -127,6 +127,8 @@ watch(species, (newSpecies) => {
 const evolutionChain = ref<EvolutionChainWithSpecies | null>(null);
 
 const fetchEvolutionChain = async (id: string) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   evolutionChain.value = await $fetch(`/api/evolution-chain/${id}`);
 };
 
