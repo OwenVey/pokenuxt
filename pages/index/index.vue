@@ -17,7 +17,7 @@
       height="initial"
       class="flex-grow"
     >
-      <template #="{ data: pokemonRow }: { data: { id: number, name: string, url: string }[] }">
+      <template #default="{ data: pokemonRow }: { data: { id: number, name: string, url: string }[] }">
         <div class="grid gap-x-4" :class="`grid-cols-${chunkSize}`">
           <NuxtLink
             v-for="pokemon of pokemonRow"
