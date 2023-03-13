@@ -90,7 +90,7 @@
           <AboutPanel :pokemon="pokemon" :species="species" />
           <StatsPanel :pokemon="pokemon" />
           <EvolutionPanel :pokemon="pokemon" :evolution-chain="evolutionChain" />
-          <TabPanel>Moves content</TabPanel>
+          <MovesPanel :pokemon="pokemon" />
         </TabPanels>
       </TabGroup>
     </div>
@@ -104,7 +104,7 @@
 
 <script setup lang="ts">
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-vue-next';
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
+import { TabGroup, TabList, Tab, TabPanels } from '@headlessui/vue';
 import { EvolutionChainWithSpecies } from '~~/types';
 
 const route = useRoute();
