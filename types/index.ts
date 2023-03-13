@@ -60,7 +60,7 @@ export interface PokemonTypePast {
 
 export interface PokemonType {
   slot: number;
-  type: Type;
+  type: NamedAPIResource;
 }
 
 export interface PokemonSprites {
@@ -308,35 +308,28 @@ export interface PokemonStat {
   stat: NamedAPIResource;
 }
 
-export interface PokemonType {
-  slot: number;
-  type: Type;
-}
+export const types = [
+  'normal',
+  'fighting',
+  'flying',
+  'poison',
+  'ground',
+  'rock',
+  'bug',
+  'ghost',
+  'steel',
+  'fire',
+  'water',
+  'grass',
+  'electric',
+  'psychic',
+  'ice',
+  'dragon',
+  'dark',
+  'fairy',
+] as const;
 
-export interface Type {
-  name:
-    | 'normal'
-    | 'fighting'
-    | 'flying'
-    | 'poison'
-    | 'ground'
-    | 'rock'
-    | 'bug'
-    | 'ghost'
-    | 'steel'
-    | 'fire'
-    | 'water'
-    | 'grass'
-    | 'electric'
-    | 'psychic'
-    | 'ice'
-    | 'dragon'
-    | 'dark'
-    | 'fairy'
-    | 'unknown'
-    | 'shadow';
-  url: string;
-}
+export type Type = (typeof types)[number];
 
 export interface NamedAPIResourceList {
   count: number;

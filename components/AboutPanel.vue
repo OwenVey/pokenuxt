@@ -13,15 +13,15 @@
       <DescriptionTerm>Type</DescriptionTerm>
       <DescriptionDefinition class="flex space-x-2">
         <div
-          v-for="type of pokemon.types"
-          :key="type.type.name"
+          v-for="pokemonType of pokemon.types"
+          :key="pokemonType.type.name"
           :style="{
-            color: getTypeColor(type.type.name, 'text-light'),
-            backgroundColor: getTypeColor(type.type.name, 'dark'),
+            color: getTypeColor(pokemonType.type.name, 'text-light'),
+            backgroundColor: getTypeColor(pokemonType.type.name, 'dark'),
           }"
           class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-medium capitalize"
         >
-          {{ type.type.name }}
+          {{ pokemonType.type.name }}
         </div>
       </DescriptionDefinition>
 
