@@ -105,7 +105,7 @@
 <script setup lang="ts">
 import { ChevronLeft, ChevronRight, Heart } from 'lucide-vue-next';
 import { TabGroup, TabList, Tab, TabPanels } from '@headlessui/vue';
-import { EvolutionChainWithSpecies } from '~~/types';
+import { type EvolutionChainWithSpecies } from '~/types';
 
 const route = useRoute();
 const selectedTab = useState('selectedTab', () => 0);
@@ -137,9 +137,7 @@ watch(species, (newSpecies) => {
 const evolutionChain = ref<EvolutionChainWithSpecies | null>(null);
 
 const fetchEvolutionChain = async (id: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  evolutionChain.value = await $fetch(`/api/evolution-chain/${id}`);
+  evolutionChain.value = await $fetch<EvolutionChainWithSpecies>(`/api/evolution-chain/${id}`);
 };
 
 // const { data: evolutionChain } = await useLazyFetch(

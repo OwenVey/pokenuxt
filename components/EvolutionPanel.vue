@@ -1,6 +1,8 @@
 <template>
   <TabPanel class="flex flex-grow items-center justify-center">
-    <div v-if="evolutionChain" class="flex h-full">
+    <div v-if="!evolutionChain" class="flex w-full items-center justify-center"><PokeballSpinner /></div>
+
+    <div v-else class="flex h-full">
       <Evolution :pokemon="pokemon" :chain-link="evolutionChain.chain" />
     </div>
   </TabPanel>

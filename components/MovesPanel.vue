@@ -1,6 +1,7 @@
 <template>
   <TabPanel class="flex flex-grow">
     <div v-if="pending" class="flex w-full items-center justify-center"><PokeballSpinner /></div>
+
     <div v-else-if="movesData">
       <label for="version-group" class="block text-sm font-medium leading-6 text-gray-900">Game Version</label>
       <select
@@ -57,7 +58,7 @@
           </ul>
         </div>
       </template>
-      <div v-else>No moves for this game</div>
+      <div v-else class="text-sm">No moves for this game</div>
     </div>
   </TabPanel>
 </template>
@@ -71,6 +72,7 @@ interface FormattedMove extends Move {
   level_learned_at: number;
   version_group: string;
 }
+
 const props = defineProps<{
   pokemon: Pokemon;
 }>();
