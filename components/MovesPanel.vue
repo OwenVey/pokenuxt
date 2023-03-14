@@ -14,11 +14,42 @@
 
     <div v-for="[learnMethod, moveList] in movesByVersionGroup" :key="learnMethod">
       <h3 class="mt-6 font-semibold capitalize">{{ learnMethod }}</h3>
-      <ul class="space-y-1">
-        <li v-for="move in moveList" :key="move.name" class="flex">
-          <NuxtImg :src="`/images/moves/${move.type.name}.png`" :height="32" :width="32" />
-          <div class="capitalize">{{ move.name.replace('-', ' ') }}</div>
-          <!-- <div>{{ move.machines.find((m) => m.version_group.name === selectedVersion)?.machine }}</div> -->
+      <ul class="">
+        <li
+          v-for="move in moveList"
+          :key="move.name"
+          class="my-2 grid grid-cols-3 items-center gap-x-4 rounded-lg border bg-gray-50 p-2"
+        >
+          <div class="flex items-center">
+            <NuxtImg
+              :src="`/images/moves/${move.type.name}.png`"
+              :alt="`${move.type.name} move`"
+              :height="32"
+              :width="32"
+            />
+            <div class="ml-2 whitespace-nowrap text-sm font-medium capitalize text-gray-900">
+              {{ move.name.replace('-', ' ') }}
+            </div>
+          </div>
+          <!-- <p v-if="move.effect_entries[0]?.effect" class="text-xs">{{ move.effect_entries[0].short_effect }}</p> -->
+
+          <div class="flex gap-x-4">
+            <div>
+              <div class="text-xs text-gray-500">Power</div>
+              <div class="text-sm font-medium">{{ move.power || '—' }}</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-gray-500">Accuracy</div>
+              <div class="text-sm font-medium">{{ move.accuracy || '—' }}</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-gray-500">PP</div>
+              <div class="text-sm font-medium">{{ move.pp || '—' }}</div>
+            </div>
+          </div>
+
           <div v-if="learnMethod === 'level-up'">{{ move.level_learned_at }}</div>
         </li>
       </ul>
