@@ -13,7 +13,7 @@
 
     <UseVirtualList
       :list="filteredPokemon"
-      :options="{ itemHeight: 158, overscan: 5 }"
+      :options="{ itemHeight: 174, overscan: 5 }"
       height="initial"
       class="flex-grow"
     >
