@@ -2,7 +2,7 @@
   <TabPanel class="flex flex-grow">
     <div v-if="pending" class="flex w-full items-center justify-center"><PokeballSpinner /></div>
 
-    <div v-else-if="movesData">
+    <div v-else-if="movesData" class="w-full">
       <label for="version-group" class="block text-sm font-medium leading-6 text-gray-900">Game Version</label>
       <select
         id="version-group"
@@ -18,11 +18,11 @@
       <template v-if="formattedMoves.size">
         <div v-for="[learnMethod, moveList] in formattedMoves" :key="learnMethod">
           <h3 class="mt-6 font-semibold capitalize">{{ learnMethod }}</h3>
-          <ul class="">
+          <ul>
             <li
               v-for="move in moveList"
               :key="move.name"
-              class="my-2 grid grid-cols-3 items-center gap-x-4 rounded-lg border bg-gray-50 p-2"
+              class="my-2 flex justify-between rounded-lg border bg-gray-50 p-2"
             >
               <div class="flex items-center">
                 <NuxtImg
@@ -31,12 +31,17 @@
                   :height="32"
                   :width="32"
                 />
-                <div class="ml-2 whitespace-nowrap text-sm font-medium capitalize text-gray-900">
-                  {{ move.name.replace('-', ' ') }}
+                <div class="ml-2">
+                  <div class="whitespace-nowrap text-sm font-medium capitalize text-gray-900">
+                    {{ move.name.replace('-', ' ') }}
+                  </div>
+                  <div v-if="learnMethod === 'level-up'" class="text-xs text-gray-500">
+                    Level {{ move.level_learned_at }}
+                  </div>
                 </div>
               </div>
 
-              <div class="flex gap-x-4">
+              <div class="flex gap-x-6 pr-4">
                 <div>
                   <div class="text-xs text-gray-500">Power</div>
                   <div class="text-sm font-medium">{{ move.power || '—' }}</div>
@@ -52,8 +57,6 @@
                   <div class="text-sm font-medium">{{ move.pp || '—' }}</div>
                 </div>
               </div>
-
-              <div v-if="learnMethod === 'level-up'">{{ move.level_learned_at }}</div>
             </li>
           </ul>
         </div>
