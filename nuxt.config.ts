@@ -4,16 +4,20 @@ export default defineNuxtConfig({
       title: 'Pokenuxt',
     },
   },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@vueuse/nuxt', '@nuxt/devtools'],
+
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@vueuse/nuxt'],
   css: ['~/styles/global.css'],
+
   runtimeConfig: {
     apiKey: '',
   },
+
   typescript: {
     strict: true,
     shim: false,
     typeCheck: true,
   },
+
   routeRules: {
     '/': {
       static: true,
@@ -23,5 +27,9 @@ export default defineNuxtConfig({
       static: true,
       cache: { maxAge: 60 * 60 * 24 },
     },
+  },
+
+  devtools: {
+    enabled: true,
   },
 });
