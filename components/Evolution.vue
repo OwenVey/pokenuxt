@@ -18,7 +18,7 @@
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="m-auto my-4 h-6 w-6 text-gray-400 sm:my-0 sm:mx-4 sm:-rotate-90"
+        class="m-auto my-4 h-6 w-6 text-gray-400 sm:mx-4 sm:my-0 sm:-rotate-90"
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3" />
       </svg>

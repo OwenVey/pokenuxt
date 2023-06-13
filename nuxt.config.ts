@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@vueuse/nuxt'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@vueuse/nuxt'],
   css: ['~/styles/global.css'],
 
   runtimeConfig: {
