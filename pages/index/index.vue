@@ -3,7 +3,7 @@
 
   <div v-else-if="error">{{ error }}</div>
 
-  <div v-else-if="allPokemon" class="flex h-full flex-col px-4 pt-4">
+  <div v-else-if="allPokemon" class="mx-auto flex h-full w-full max-w-7xl flex-col px-4 pt-4">
     <input
       v-model="search"
       type="text"
@@ -17,7 +17,7 @@
       height="initial"
       class="flex-grow"
     >
-      <template #default="{ data: pokemonRow }: { data: { id: number, name: string, url: string }[] }">
+      <template #default="{ data: pokemonRow }: { data: { id: number; name: string; url: string }[] }">
         <div class="grid gap-x-4" :class="`grid-cols-${chunkSize}`">
           <NuxtLink
             v-for="pokemon of pokemonRow"
