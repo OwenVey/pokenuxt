@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Pokemon, types, Type } from '~/types';
+import { type Pokemon, types, type Type } from '~/types';
 import { TabPanel } from '@headlessui/vue';
 
 const progressBarMax = 150;
